@@ -2,7 +2,8 @@ From 642bd3231a3b102242335f90592ba6d9f8583dd7 Mon Sep 17 00:00:00 2001
 From: JKwidzinski <jakub.kwidzinski@gmail.com>
 Date: Tue, 23 Nov 2021 20:27:28 +0100
 Subject: [PATCH 2/3] Fixed division by zero
-
+Patch 1.0 created by Jakub Kwidziński and Jeremi Rycharski on November 23, 2021
+NUM02-J. Ensure that division and remainder operations do not result in divide-by-zero errors
 ---
  calc.java                          |  30 ++++++++++++++++++-----------
  out/production/BSI_CERT/calc.class | Bin 2551 -> 2629 bytes

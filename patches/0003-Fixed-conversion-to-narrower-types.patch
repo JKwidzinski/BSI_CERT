@@ -2,7 +2,8 @@ From fd0e282e65d579d6605cd7459b67328a31ddc874 Mon Sep 17 00:00:00 2001
 From: JKwidzinski <jakub.kwidzinski@gmail.com>
 Date: Tue, 23 Nov 2021 20:43:26 +0100
 Subject: [PATCH 3/3] Fixed conversion to narrower types
-
+Patch 1.0 created by Jakub Kwidziński and Jeremi Rycharski on November 23, 2021
+NUM12-J. Ensure conversions of numeric types to narrower types do not result in lost or misinterpreted data
 ---
  calc.java                          |   3 +++
  out/production/BSI_CERT/calc.class | Bin 2629 -> 2796 bytes

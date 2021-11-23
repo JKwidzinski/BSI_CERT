@@ -2,7 +2,8 @@ From f8924a15c1b3842ee6f5fbc88860cf679360d42e Mon Sep 17 00:00:00 2001
 From: JKwidzinski <jakub.kwidzinski@gmail.com>
 Date: Tue, 23 Nov 2021 20:18:52 +0100
 Subject: [PATCH] Fixed NaN comparison
-
+Patch 1.0 created by Jakub Kwidziński and Jeremi Rycharski on November 23, 2021
+NUM07-J. Do not attempt comparisons with NaN
 ---
  .idea/.gitignore                          |   8 ++++++++
  .idea/misc.xml                            |   6 ++++++
@@ -106,7 +107,7 @@ diff --git a/calc.java b/calc.java
 index 8959c74..a0e2552 100644
 --- a/calc.java
 +++ b/calc.java
-@@ -39,7 +39,7 @@ public class calc
+@@ -39,7 +39,7 @@ public class calc 
              System.out.println(a + " * " + b + " = " + c);	}
          else if (somethin == division) {
              c = a / b;
