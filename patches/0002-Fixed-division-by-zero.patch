@@ -1,0 +1,95 @@
+From 642bd3231a3b102242335f90592ba6d9f8583dd7 Mon Sep 17 00:00:00 2001
+From: JKwidzinski <jakub.kwidzinski@gmail.com>
+Date: Tue, 23 Nov 2021 20:27:28 +0100
+Subject: [PATCH 2/3] Fixed division by zero
+
+---
+ calc.java                          |  30 ++++++++++++++++++-----------
+ out/production/BSI_CERT/calc.class | Bin 2551 -> 2629 bytes
+ 2 files changed, 19 insertions(+), 11 deletions(-)
+
+diff --git a/calc.java b/calc.java
+index a0e2552..2b2a29a 100644
+--- a/calc.java
++++ b/calc.java
+@@ -38,11 +38,15 @@ public class calc
+             c = a * b;
+             System.out.println(a + " * " + b + " = " + c);	}
+         else if (somethin == division) {
+-            c = a / b;
+-            if (Double.isNaN(c)) {
+-                System.out.println("Result is NaN");
+-            } else {
+-                System.out.println(a + " / " + b + " = " + c);
++            if (b == 0){
++                System.out.println("Cannot divide by 0");
++            }else {
++                c = a / b;
++                if (Double.isNaN(c)) {
++                    System.out.println("Result is NaN");
++                } else {
++                    System.out.println(a + " / " + b + " = " + c);
++                }
+             }
+         }
+         else if (somethin == power)	{
+@@ -58,12 +62,16 @@ public class calc
+ 
+         }
+         else if(somethin == idivision) {
+-            int d = (int) a, e = (int) b, f = 0;
+-            f = d / e;
+-            if (Double.isNaN(f)) {
+-                System.out.println("Result is NaN");
+-            } else {
+-                System.out.println(d + " / " + e + " = " + f);
++            if(b == 0){
++                System.out.println("Cannot divide by 0");
++            }else {
++                int d = (int) a, e = (int) b, f = 0;
++                f = d / e;
++                if (Double.isNaN(f)) {
++                    System.out.println("Result is NaN");
++                } else {
++                    System.out.println(d + " / " + e + " = " + f);
++                }
+             }
+         }
+     }
+diff --git a/out/production/BSI_CERT/calc.class b/out/production/BSI_CERT/calc.class
+index 003bdb62b43015c88e8644e58e7f858d53233302..ec6f155a0daf0f0d835b2e25d1c39ba4975ad161 100644
+GIT binary patch
+delta 930
+zcmZ9K!B13I6vlt&&6{~RyiVxr4D*;$eX%VO1hfe12vkr+(W15pRm56#rgTuDR;Aij
+zkwRNdT+rNwQKPFSuB{0e7PgDpMH3TNrkfhK`VZ8FLC-wJ#J<IMzjMC(opav3_rJI9
+zCgXq4&)xx=xo|T+X}w><I>Fm`V0d`sM35_t7IOLE;OSsxoEBOgK6F`6o4IPeCmYNk
+zR$4Zhf2_*V&1`Y#a@oo@^UQiT-R-iP?Sj3mqq@%{!cLb4J~r7%rS#nDi)2M|X3AcX
+z7>)A{ryNcf^>58R`_KCCg+&r94<u*}q=d6!Sho<K3&Wa)@CWmI^d0%p{2Q&Ye-;*-
+zhtb8RI_3_1f~9|jq7WsfxJ#oIx{9vRni=F~DEBHBWlhqj=)UBivRk7??4e&XYK{!y
+zPziF~{1Q7ZwI=E;v82>gIl->Seu-ap=?d+>ozNxm8=jY)rtt=I%Y1tz8}nngX}<hI
+zXb*)M-J_Zxn`I+}sb95<r}nKydxtsiEM40<%||z=@XP&-3U8|5+exZ!^FruVM^c6E
+z|MxX>PNwelhDkN2%2Vl-Kg*7=WAOkY6c6ApJ}~K${McP;n4^~a)bW6N9<h?AG>T1=
+zxU3P6wUQz$8GR*7X_f|BWF4)th4r$HHtC^V`q?0PI^-Ce<P@DU&Stqtmt3PeJm6_O
+zt+SfF3{bAsR<Tc+uQlt(_)KX=3N*5x&s84QD?6Ypt>tPtsLU_k0Efuw*rj54gS_6)
+z+cLoy>b0nrlME`eNyrpmDvRmhgA|k%A9s!+WpN#NKZljMI%+>hlqDGJl3tD~Ez`%l
+zlVN2ZJ^E)O%94DgEgNv3aRS%jn1d5}^+6C+_})BCntDRYs+gxrM4o7^2w$ty;<y?i
+dqobYFk-rP^Oo(G4j+Zf^8{#TX@)PH&cn&hUqiFyD
+
+delta 850
+zcmY+A$xl;p5XV2$SNcjR4b)N|i19@QK`DzAv{ZIbL9HUVp$IN0D1r*OpoqJ7-@)kJ
+zs7E9rgo7vaV7&7e7!yy%i^KyutxIAL)6dLzX5RNV??T^K`97>HyanPsp7A|!W%{Tk
+zZnE7^9rezvYeQb6ka=KWY+`ua9vZU~Clf&oD!sHgUtI+mZR{}F>1P-1POh;&cekG!
+z_6Y9c){;ZX&V-*W>~lJe0_mI`F=8U8oLBDhz_^bIu9{p+>ero5?!~f6Azkdvw%B#H
+zc)68IBY)G|sdUrd^p3NXw#I#5D0H&Z3JsHoj_rx8+K)?LgGM0@kH!N|zb9PPrL|;+
+zR=YL&|L{Q$X_n4mjwE}*h+<LzGU>ebjEUD-W3F}a*{L_}=J%G@%6j^o@?y(98uM75
+zd1B89ydfBDm?Qd<7mBJ`o&}m9ReGW`L7nMHb~QV1%ymVrb9B5U&k9@lDrBo*xkD7q
+z^IK@qiO|#Mj^CRf`G0*#TXVuWxjEJXdsF*o)Vx9RadSkRF7LqfBAfWgW|oNXg$lk=
+z$q%aZ<xw%H*1Oh77F)$;n-mk18sZXTyEIWJd#RUh8l;y-8KhZm(3U#Z96_D0;V3<X
+zbxRe;lq}s<#&M;5X(LK6CkRhV2j%oB=IXjq`jxEYH95&CwV5HKWO7<>y;}M>qr)yr
+zq>}+9Hvt*utdd6!ws20#ORY3AsN_>)afX!qw5sj%N&(uXk_$>%B&3vKrg{j{B^$Y@
+z#SkO<$qIZw8OLujYGNAyeqh^naD{5EER*9}p-e=Ub(O&-opW)SEBc?W#>Uj}ja0mu
+Tic_gL&0W=fs@>xOkI4H4%_NM_
+
+-- 
+2.24.1.windows.2
+

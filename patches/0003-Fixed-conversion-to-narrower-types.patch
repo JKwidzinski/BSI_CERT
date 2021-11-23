@@ -1,0 +1,57 @@
+From fd0e282e65d579d6605cd7459b67328a31ddc874 Mon Sep 17 00:00:00 2001
+From: JKwidzinski <jakub.kwidzinski@gmail.com>
+Date: Tue, 23 Nov 2021 20:43:26 +0100
+Subject: [PATCH 3/3] Fixed conversion to narrower types
+
+---
+ calc.java                          |   3 +++
+ out/production/BSI_CERT/calc.class | Bin 2629 -> 2796 bytes
+ 2 files changed, 3 insertions(+)
+
+diff --git a/calc.java b/calc.java
+index 2b2a29a..22cedc6 100644
+--- a/calc.java
++++ b/calc.java
+@@ -65,6 +65,9 @@ public class calc
+             if(b == 0){
+                 System.out.println("Cannot divide by 0");
+             }else {
++                if ((a < Integer.MIN_VALUE) || (a > Integer.MAX_VALUE) || (b < Integer.MIN_VALUE) || (b > Integer.MAX_VALUE) ) {
++                    throw new ArithmeticException("Value is out of range");
++                }
+                 int d = (int) a, e = (int) b, f = 0;
+                 f = d / e;
+                 if (Double.isNaN(f)) {
+diff --git a/out/production/BSI_CERT/calc.class b/out/production/BSI_CERT/calc.class
+index ec6f155a0daf0f0d835b2e25d1c39ba4975ad161..2b12cc785fd56dfb9272ecbb28e0ddb3f000bfe3 100644
+GIT binary patch
+delta 834
+zcmYL_%TE(=5XZmMU3N<?jVvu}(Z=<F!3Q(}lpsMvlpsb4rUAhhR4k<kEtc|9wBiGN
+z3;rZ12BV2aJs5)~NYIETdXR(h=1~*l%|C#Hp-xxPIm~?K`J3N-aQ<}J<`-w*04T-S
+zl&wsPtEeHQxA}Yg-gbXD=&cIJ0>MC3dH0QrSd{XwiA3TpprVf8`CnKb4aHhJ0<lnY
+zMPGBEGZu=3t*9rs>iq590VC99M7m=}q{WEx*nkbS*k?xyJQ^e%u%iG630b+KR??~Q
+zMOZ2!>J*P<uj7mjXK_x&`DD$I_#wZ~zd%SOW4%E}nL$=uGTpo-_loJRTXL_7FDV{*
+zl#nCRQ*tB~LKsS3#vxdc6bp#AP*^vKCMC1b&#|Njjvi)h|I5ud!d@x@Xi3%r(mg)G
+zN`U6Y6Qzslg-120SZq;OStwI9s_wjBxw;%FQFLVnrMKaD4oxecM$sdDXXKo&%wij0
+zhCYjjYIWtHZq=RR6X@4v2OG1c#LNeCo!E2h4m@mq<CAdd@}Gb`3BK{WNPC6a25s+4
+zG|UNywIE}^IeChgmXQ3^Clm^wbt*oL3K~TvO=1T<Kovd3PMX0k`iL6y!_&}6!zKjL
+zicE5$5FsX=vXPHArfeER5ssprvlH;5gDH!rZ9tewPaXsjbn=VKXbx#O#^+i=&k*Ha
+z3)aTzKDroXIOsKEObUugpqt5x%`}1@CL6ZWW%M%Hv7Ls{$K>E;2hq>89Mv>{<4hWS
+z)Qb~LP7LsqMQ|i|s9nWL6{_@40K;(W+9EdY=GX#U7WeAZMXVvB1s*5i6gOKC$7#0N
+cyxbsfJ#6ZWroL?ItGLd28|OxF12^IR4Tut@{r~^~
+
+delta 654
+zcmXw!OHWf#6otRt$GxT0#*_lLMMFml2s8rGU_*?-SED=>LB$7DkqTn5yu>FWJ}@yx
+za|T8e9ho?AV5$ik29DH$Bm4!<jRS{{(A^uEtn;nC&dyoqSNWG{@Z0M0Cm_XxLa@!d
+zIf9q&5KSBsDr?f|bnU^>%uFUZmdRz4JyR1Sxopa&=lu_FtH_Xv`IF(9AeWi7xl&xa
+zYWn=28?Or`lGu`vL|Z}v+;nZjn!V-Px;1;-?6)?`T{CRe$$j(0YA8F5M=PN!__0)v
+znD16abFa>d4xRR?hW_(Wj;Sl*IQ_-D;2p(g1ISAgw<o3EJhBr~YTnw_9)6k?JJzsL
+z<M_r~Eywyu>KWm8L?XMEXnD;CMa>**nRakTuS`Xtv#Qq#IMJui>2Q2uJ=~R6H&2;2
+zfu^!9_jW;xcqtbB%2x9`P?*cJM`qb8^X!v{q~!%2Zuuo55@8!BI7x++)66L)N8&Vc
+zS}86gv@pP+ra6*ilqw}pJ!h1h;^#QakiJwZhIO3NuUE+e!@BFCR;I}+`34EgW6mpD
+zY?mw}N&$Ar5Ti;#cFF)3ltS#5e#Vr-TC$gmO6%#AZgNTydgK7(N>MK9lTC#FGDXNH
+uZx(~q?W=4Okw3cOWkPcglNv)DAJbawnyWWlopW`b1<iw+-QgaK#Qp)3Ky+LH
+
+-- 
+2.24.1.windows.2
+
