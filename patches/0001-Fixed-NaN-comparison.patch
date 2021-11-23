@@ -1,0 +1,241 @@
+From f8924a15c1b3842ee6f5fbc88860cf679360d42e Mon Sep 17 00:00:00 2001
+From: JKwidzinski <jakub.kwidzinski@gmail.com>
+Date: Tue, 23 Nov 2021 20:18:52 +0100
+Subject: [PATCH] Fixed NaN comparison
+
+---
+ .idea/.gitignore                          |   8 ++++++++
+ .idea/misc.xml                            |   6 ++++++
+ .idea/modules.xml                         |   8 ++++++++
+ .idea/vcs.xml                             |   6 ++++++
+ BSI_CERT.iml                              |  11 +++++++++++
+ calc.java                                 |   4 ++--
+ out/production/BSI_CERT/.idea/.gitignore  |   8 ++++++++
+ out/production/BSI_CERT/.idea/misc.xml    |   6 ++++++
+ out/production/BSI_CERT/.idea/modules.xml |   8 ++++++++
+ out/production/BSI_CERT/.idea/vcs.xml     |   6 ++++++
+ out/production/BSI_CERT/BSI_CERT.iml      |  11 +++++++++++
+ out/production/BSI_CERT/calc.class        | Bin 0 -> 2551 bytes
+ 12 files changed, 80 insertions(+), 2 deletions(-)
+ create mode 100644 .idea/.gitignore
+ create mode 100644 .idea/misc.xml
+ create mode 100644 .idea/modules.xml
+ create mode 100644 .idea/vcs.xml
+ create mode 100644 BSI_CERT.iml
+ create mode 100644 out/production/BSI_CERT/.idea/.gitignore
+ create mode 100644 out/production/BSI_CERT/.idea/misc.xml
+ create mode 100644 out/production/BSI_CERT/.idea/modules.xml
+ create mode 100644 out/production/BSI_CERT/.idea/vcs.xml
+ create mode 100644 out/production/BSI_CERT/BSI_CERT.iml
+ create mode 100644 out/production/BSI_CERT/calc.class
+
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+index 0000000..9be9f7e
+--- /dev/null
++++ b/.idea/.gitignore
+@@ -0,0 +1,8 @@
++# Default ignored files
++/shelf/
++/workspace.xml
++# Datasource local storage ignored files
++/../../../../../../../../:\Users\kuba\Desktop\SEM5\BSI\BSI_CERT\.idea/dataSources/
++/dataSources.local.xml
++# Editor-based HTTP Client requests
++/httpRequests/
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+index 0000000..9d82fe5
+--- /dev/null
++++ b/.idea/misc.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="15.0.1" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+index 0000000..d42cef7
+--- /dev/null
++++ b/.idea/modules.xml
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/BSI_CERT.iml" filepath="$PROJECT_DIR$/BSI_CERT.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+index 0000000..35eb1dd
+--- /dev/null
++++ b/.idea/vcs.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/BSI_CERT.iml b/BSI_CERT.iml
+new file mode 100644
+index 0000000..b107a2d
+--- /dev/null
++++ b/BSI_CERT.iml
+@@ -0,0 +1,11 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4">
++  <component name="NewModuleRootManager" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+diff --git a/calc.java b/calc.java
+index 8959c74..a0e2552 100644
+--- a/calc.java
++++ b/calc.java
+@@ -39,7 +39,7 @@ public class calc
+             System.out.println(a + " * " + b + " = " + c);	}
+         else if (somethin == division) {
+             c = a / b;
+-            if (c == Double.NaN) {
++            if (Double.isNaN(c)) {
+                 System.out.println("Result is NaN");
+             } else {
+                 System.out.println(a + " / " + b + " = " + c);
+@@ -60,7 +60,7 @@ public class calc
+         else if(somethin == idivision) {
+             int d = (int) a, e = (int) b, f = 0;
+             f = d / e;
+-            if (f == Double.NaN) {
++            if (Double.isNaN(f)) {
+                 System.out.println("Result is NaN");
+             } else {
+                 System.out.println(d + " / " + e + " = " + f);
+diff --git a/out/production/BSI_CERT/.idea/.gitignore b/out/production/BSI_CERT/.idea/.gitignore
+new file mode 100644
+index 0000000..9be9f7e
+--- /dev/null
++++ b/out/production/BSI_CERT/.idea/.gitignore
+@@ -0,0 +1,8 @@
++# Default ignored files
++/shelf/
++/workspace.xml
++# Datasource local storage ignored files
++/../../../../../../../../:\Users\kuba\Desktop\SEM5\BSI\BSI_CERT\.idea/dataSources/
++/dataSources.local.xml
++# Editor-based HTTP Client requests
++/httpRequests/
+diff --git a/out/production/BSI_CERT/.idea/misc.xml b/out/production/BSI_CERT/.idea/misc.xml
+new file mode 100644
+index 0000000..9d82fe5
+--- /dev/null
++++ b/out/production/BSI_CERT/.idea/misc.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="15.0.1" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/out/production/BSI_CERT/.idea/modules.xml b/out/production/BSI_CERT/.idea/modules.xml
+new file mode 100644
+index 0000000..d42cef7
+--- /dev/null
++++ b/out/production/BSI_CERT/.idea/modules.xml
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/BSI_CERT.iml" filepath="$PROJECT_DIR$/BSI_CERT.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/out/production/BSI_CERT/.idea/vcs.xml b/out/production/BSI_CERT/.idea/vcs.xml
+new file mode 100644
+index 0000000..35eb1dd
+--- /dev/null
++++ b/out/production/BSI_CERT/.idea/vcs.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/out/production/BSI_CERT/BSI_CERT.iml b/out/production/BSI_CERT/BSI_CERT.iml
+new file mode 100644
+index 0000000..b107a2d
+--- /dev/null
++++ b/out/production/BSI_CERT/BSI_CERT.iml
+@@ -0,0 +1,11 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4">
++  <component name="NewModuleRootManager" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+diff --git a/out/production/BSI_CERT/calc.class b/out/production/BSI_CERT/calc.class
+new file mode 100644
+index 0000000000000000000000000000000000000000..003bdb62b43015c88e8644e58e7f858d53233302
+GIT binary patch
+literal 2551
+zcmaJ@OK%fb6#j0Uc$|qzf^m`|yoR?Oz#)(XjG=iMifIxaPD6oGI<Y6o5PQb;jDgTM
+zeXwIusp>=Os;XF*ML<+yRdrEy-=9#a%dSutwBH@u#FVI(X6|{P@0@$?T>tv)@e=?k
+z+*Q$pfP&^QS`ZZIyl&hu`U{4=(0_LBx|#C?g2ye}@?H@L#Nx9GLIUf3ql#x0`m;I1
+zw#{-YRJ17whp`UrFGR^MyPjDTXtHd9u1Vk1a{4oNsp4h5vS}1kDin0e{Obj@*qSEs
+zS(#x&7*TW)h*Kf1)nMn!mR%1PLJy;yv^}$|dyA$%Z<Sq7w=2at3RD#v(W_un7@M(0
+zU_%{FLj-}Al8na$H7tHNh}E(eQt?@dc3T)awhO4XdCN;XmAQiHw<jIKPDUNG^SbFH
+zaLt@UMpr}FEpTsQ(Q#bU$K{mFvf){dP31shET6X|qaI3RD|24i$obsi#8jo=S*3!N
+z^KI3^MB2Jxxzchdan8AEmet`zhN%`<-E-B>a|P32o+<{}g<Ad2yuO-O4UTdI<S#fH
+zsuP`cB3dW3DiPr_5XK=K7U(G&OXh@Q6Vye^TO{RrhV8l3#M0?>yt;*rZIgW;3S(F{
+zUGdvnup<x{h;aM{R2)M}!SOIofOFO`gZ19FSnjkjEzlfG$1jI4DzNT?>9RMv<?7T#
+z5WqkP6GU**UNr2SsgLPSSsx#f&1F}|Rh+~r1+Rv28X1B1)j6LsyhZL_$+^j`C;oU^
+zqJ2%Govdb@mEosl@n>a;nM`Jl5*3`Mb<QZ{xJ)>CPDIC~Wt-Ff=*<}Zj6^0KTFe?{
+zOY${gv$trmcfm>NoT7KpkcXu^cID+p#%I|;vs$8nNE5O@;dHOg8ijd2EKv}Fm}fYn
+zyuk1q)`&)FHAUlDCIVsbnd8G+LatLZiI9jwMr}+5+T7JKWjBj2j43ViwK0{aNsg&N
+ztF<aym-UR?(v(s1JD`B6)T~n}=gd=<JW8#y6A8IRoQ847@mwB>(iCAhdAB17Pelbc
+z6x@`1a!X*>>TX*04QI*huO8RxjGp3Ya>~mBUpF4;nqf8QX~WJJOn29$<1AH5sh9iS
+zAbG)YX1QdpVcyv5>UT8NI5M>m6GowswLCKw!fh5U^nJR}Pv|0q_k8w1o&CUP`|9jR
+zKHFbq1;QEm37#kzu4}pqJ`vdcQa{!zQ^98fTmRowj-}rdY{xmCRrzb;!R2Ma_XTqO
+zTm{#bzK0M$`sys-QcWRd_zu_T*D*`36&LXaC3Fr9@?*Lg5VwDVa_IqDAM(t!CxZ_V
+ziFB_(+qZ(P8OiLZG0A4h?W%L3j-(pJo@6+RSh78ezGP<<`;(C<63M6*($ufM#pamS
+zobyAH(1MR~5Lm(BeG#HTxMr}>XmF%zfIn!^UNcx~G&ou__=N_YH0Wn!CmGa&kC6NZ
+z?GoaMOo1Or*0PS(e7>Mhgg$4a)i|wWjmhqgq$UgL)w(r}+6~f?f=5WN;LLq&q`a5%
+z^^|MP4T=edi&Bw_-5c)Kn(qzw1ctS)?yjB!7wztU0Y&LAwO!g{O!<i9js+lhYy}7W
+z-D%@Z+s-}f=3Tyt)J}9Dj!q0f!x4TNkD(VM)TFs{8EnBcw$gtauJBGYI3^x;;5~ZX
+z!7hA>-S`fB@ICf2ehg0->1XueH|)dj%=agE<1a@3TV5*|6afrz`iDg)jtCt`MGQ$X
+zjFd>?xER9;F~$2~1|#AsuYg62i)DV*<%F#uLjPf0!ew+b%3-3p42`i8c#~AGIEg`A
+z#aq;#;mBSi)x&7}@ir-5apE?y&oNS)a9DSa^SMb}L!Q1(h>P<uNj3AoO#$<yg2Xq0
+z1yUg#6Qfupr4m;P7O61OM17r9JMWqSERpKOwAhaVsR*)SFN&n1u$l27)PLBtumVSc
+z5_tXtbX|`;!w@A;(be<}2_eK&Mhc)rzb3qcGS^<>a*21@f4}R$-}m1i;$!Mn>h9oE
+Ie2$I(0s{~_nE(I)
+
+literal 0
+HcmV?d00001
+
+-- 
+2.24.1.windows.2
+
